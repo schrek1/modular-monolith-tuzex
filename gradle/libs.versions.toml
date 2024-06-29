@@ -1,0 +1,22 @@
+[versions]
+kotlin = "2.0.0"
+spring = "3.3.0"
+arrow = "1.2.4"
+
+[libraries]
+spring-bom = { group = "org.springframework.boot", name = "spring-boot-dependencies", version.ref = "spring" }
+spring-configProcessor = { group = "org.springframework.boot", name = "spring-boot-configuration-processor", version.ref = "spring" }
+
+arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow" }
+
+
+# TEST DEPENDECIES
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+openapi-generator = { id = "org.openapi.generator", version = "7.6.0" }
+springBoot = { id = "org.springframework.boot", version.ref = "spring" }
+
+[bundles]
