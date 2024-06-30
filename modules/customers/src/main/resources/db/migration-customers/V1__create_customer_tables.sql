@@ -27,12 +27,12 @@ CREATE INDEX IF NOT EXISTS idx_customer_addresses_customer_id ON customer_addres
 
 CREATE TABLE IF NOT EXISTS customer_contacts
 (
-    id          SERIAL PRIMARY KEY,
-    customer_id INTEGER                  NOT NULL,
-    type        TEXT                     NOT NULL,
-    value       TEXT                     NOT NULL,
-    created_at  TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at  TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    id           SERIAL PRIMARY KEY,
+    customer_id  INTEGER                  NOT NULL,
+    contact_type TEXT                     NOT NULL,
+    value        TEXT                     NOT NULL,
+    created_at   TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at   TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (customer_id) REFERENCES customers (id) ON DELETE CASCADE
 );
 

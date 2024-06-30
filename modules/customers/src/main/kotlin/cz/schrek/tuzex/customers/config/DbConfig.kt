@@ -19,30 +19,27 @@ import javax.sql.DataSource
 @EnableTransactionManagement
 @EnableJpaRepositories(
     basePackages = ["${Const.BASE_PACKAGE}.${CustomerModuleConfiguration.MODULE_NAME}"],
-    entityManagerFactoryRef = "productsEntityManager",
-    transactionManagerRef = "productsTransactionManager"
+    entityManagerFactoryRef = "customersEntityManager",
+    transactionManagerRef = "customersTransactionManager"
 )
 class DbConfig(
     private val moduleConfiguration: CustomerModuleConfiguration
 ) {
 
     @Bean
-    fun customersEntityManager(): LocalContainerEntityManagerFactoryBean {
-        val em = LocalContainerEntityManagerFactoryBean()
-        em.dataSource = customersPostgres()
-        em.setPackagesToScan(*arrayOf("${Const.BASE_PACKAGE}.${CustomerModuleConfiguration.MODULE_NAME}"))
-
-        em.jpaVendorAdapter = HibernateJpaVendorAdapter()
-
-        return em
-    }
+    fun customersEntityManager(): LocalContainerEntityManagerFactoryBean =
+        LocalContainerEntityManagerFactoryBean().apply {
+            dataSource = customersPostgres()
+            setPackagesToScan("${Const.BASE_PACKAGE}.${CustomerModuleConfiguration.MODULE_NAME}")
+            jpaVendorAdapter = HibernateJpaVendorAdapter()
+            setJpaPropertyMap(buildMap {
+                put("hibernate.default_schema", moduleConfiguration.datasource.schema)
+            })
+        }
 
     @Bean
-    fun customersTransactionManager(@Qualifier("customersEntityManager") emf: EntityManagerFactory): PlatformTransactionManager {
-        val transactionManager = JpaTransactionManager()
-        transactionManager.entityManagerFactory = emf
-        return transactionManager
-    }
+    fun customersTransactionManager(@Qualifier("customersEntityManager") emf: EntityManagerFactory): PlatformTransactionManager =
+        JpaTransactionManager().apply { entityManagerFactory = emf }
 
     @Bean
     fun customersPostgres(): DataSource =

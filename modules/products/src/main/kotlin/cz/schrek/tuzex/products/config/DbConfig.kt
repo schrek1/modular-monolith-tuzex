@@ -27,22 +27,17 @@ class DbConfig(
 ) {
 
     @Bean
-    fun productsEntityManager(): LocalContainerEntityManagerFactoryBean {
-        val em = LocalContainerEntityManagerFactoryBean()
-        em.dataSource = productsPostgres()
-        em.setPackagesToScan(*arrayOf("${Const.BASE_PACKAGE}.${ProductModuleConfiguration.MODULE_NAME}"))
-
-        em.jpaVendorAdapter = HibernateJpaVendorAdapter()
-
-        return em
-    }
+    fun productsEntityManager(): LocalContainerEntityManagerFactoryBean =
+        LocalContainerEntityManagerFactoryBean().apply {
+            dataSource = productsPostgres()
+            setPackagesToScan("${Const.BASE_PACKAGE}.${ProductModuleConfiguration.MODULE_NAME}")
+            jpaVendorAdapter = HibernateJpaVendorAdapter()
+            setJpaPropertyMap(buildMap { put("hibernate.default_schema", moduleConfiguration.datasource.schema) })
+        }
 
     @Bean
-    fun productsTransactionManager(@Qualifier("productsEntityManager") emf: EntityManagerFactory?): PlatformTransactionManager {
-        val transactionManager = JpaTransactionManager()
-        transactionManager.entityManagerFactory = emf
-        return transactionManager
-    }
+    fun productsTransactionManager(@Qualifier("productsEntityManager") emf: EntityManagerFactory?): PlatformTransactionManager =
+        JpaTransactionManager().apply { entityManagerFactory = emf }
 
     @Bean
     fun productsPostgres(): DataSource =
