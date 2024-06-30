@@ -1,12 +1,26 @@
 package cz.schrek.tuzex.customers.config
 
-import org.springframework.context.annotation.PropertySource
+import org.springframework.boot.context.properties.ConfigurationProperties
 
-@PropertySource("classpath:module-customers-config.yaml")
+@ConfigurationProperties(prefix = "modules.customers")
 data class CustomerModuleConfiguration(
-    val foo: String
+    val datasource: DataSourceConfiguration,
+    val flyway: FlywayConfiguration
 ) {
     companion object {
         const val MODULE_NAME = "customers"
     }
 }
+
+
+data class DataSourceConfiguration(
+    val url: String,
+    val username: String,
+    val password: String,
+    val schema: String
+)
+
+data class FlywayConfiguration(
+    val enabled: Boolean,
+    val location: String
+)

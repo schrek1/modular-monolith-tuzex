@@ -1,0 +1,21 @@
+modules:
+  customers:
+    datasource:
+      url: jdbc:postgresql://localhost:15432/postgres
+      username: postgres
+      password: postgres
+      schema: customers
+
+    flyway:
+      enabled: true
+      location: classpath:db/migration-customers
+  products:
+    datasource:
+      url: jdbc:postgresql://localhost:15432/postgres
+      username: postgres
+      password: postgres
+      schema: products
+
+    flyway:
+      enabled: true
+      location: classpath:db/migration-products

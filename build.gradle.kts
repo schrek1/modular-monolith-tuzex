@@ -1,6 +1,7 @@
 plugins {
     alias(catalog.plugins.kotlin.jvm)
     alias(catalog.plugins.kotlin.kapt)
+    alias(catalog.plugins.kotlin.serialization)
     alias(catalog.plugins.springBoot) apply false
     alias(catalog.plugins.kotlin.plugin.spring) apply false
 }

@@ -2,6 +2,7 @@
 kotlin = "2.0.0"
 spring = "3.3.0"
 arrow = "1.2.4"
+flyway = "10.15.0"
 
 [libraries]
 spring-bom = { group = "org.springframework.boot", name = "spring-boot-dependencies", version.ref = "spring" }
@@ -9,14 +10,21 @@ spring-configProcessor = { group = "org.springframework.boot", name = "spring-bo
 
 arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow" }
 
+postgresql = { group = "org.postgresql", name = "postgresql", version = "42.7.3" }
+flyway-core = { group = "org.flywaydb", name = "flyway-core", version.ref = "flyway" }
+flyway-postgres = { group = "org.flywaydb", name = "flyway-database-postgresql", version.ref = "flyway" }
 
 # TEST DEPENDECIES
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
-openapi-generator = { id = "org.openapi.generator", version = "7.6.0" }
 springBoot = { id = "org.springframework.boot", version.ref = "spring" }
 
 [bundles]
+flyway = [
+    "flyway-core",
+    "flyway-postgres"
+]
