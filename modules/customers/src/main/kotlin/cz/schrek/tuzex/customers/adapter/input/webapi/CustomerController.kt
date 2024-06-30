@@ -2,9 +2,9 @@ package cz.schrek.tuzex.customers.adapter.input.webapi
 
 import arrow.core.getOrElse
 import cz.schrek.tuzex.common.webapi.WebApiConst
-import cz.schrek.tuzex.contracts.models.common.Address
-import cz.schrek.tuzex.contracts.models.common.Email
-import cz.schrek.tuzex.contracts.models.common.PhoneNumber
+import cz.schrek.tuzex.contracts.model.common.Address
+import cz.schrek.tuzex.contracts.model.common.Email
+import cz.schrek.tuzex.contracts.model.common.PhoneNumber
 import cz.schrek.tuzex.contracts.modules.customers.NewCustomerRequest
 import cz.schrek.tuzex.customers.adapter.input.webapi.dto.CreateCustomerApiRequest
 import cz.schrek.tuzex.customers.adapter.input.webapi.dto.CreateCustomerApiResponse

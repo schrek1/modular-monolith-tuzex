@@ -1,10 +1,10 @@
 package cz.schrek.tuzex.contracts.modules.customers
 
 import arrow.core.Either
-import cz.schrek.tuzex.contracts.models.common.Address
-import cz.schrek.tuzex.contracts.models.common.Email
-import cz.schrek.tuzex.contracts.models.common.PhoneNumber
-import cz.schrek.tuzex.contracts.models.customer.CustomerId
+import cz.schrek.tuzex.contracts.model.common.Address
+import cz.schrek.tuzex.contracts.model.common.Email
+import cz.schrek.tuzex.contracts.model.common.PhoneNumber
+import cz.schrek.tuzex.contracts.model.customers.CustomerId
 
 interface CustomerCreator {
     fun createNewCustomer(request: NewCustomerRequest): Either<List<CustomerCreationError>, CustomerId>

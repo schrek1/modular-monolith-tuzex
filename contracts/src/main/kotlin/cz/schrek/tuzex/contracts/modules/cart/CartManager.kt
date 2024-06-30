@@ -1,10 +1,10 @@
 package cz.schrek.tuzex.contracts.modules.cart
 
 import arrow.core.Either
-import cz.schrek.tuzex.contracts.models.cart.Cart
-import cz.schrek.tuzex.contracts.models.cart.CartId
-import cz.schrek.tuzex.contracts.models.customer.CustomerId
-import cz.schrek.tuzex.contracts.models.products.ProductId
+import cz.schrek.tuzex.contracts.model.cart.Cart
+import cz.schrek.tuzex.contracts.model.cart.CartId
+import cz.schrek.tuzex.contracts.model.customers.CustomerId
+import cz.schrek.tuzex.contracts.model.products.ProductId
 
 interface CartManager {
     fun createNewCart(customerId: CustomerId, alias: String? = null): CartId

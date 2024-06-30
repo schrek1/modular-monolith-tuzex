@@ -1,9 +1,9 @@
 package cz.schrek.tuzex.customers.adapter.output.storage
 
-import cz.schrek.tuzex.contracts.models.common.Address
-import cz.schrek.tuzex.contracts.models.common.Email
-import cz.schrek.tuzex.contracts.models.common.PhoneNumber
-import cz.schrek.tuzex.contracts.models.customer.Customer
+import cz.schrek.tuzex.contracts.model.common.Address
+import cz.schrek.tuzex.contracts.model.common.Email
+import cz.schrek.tuzex.contracts.model.common.PhoneNumber
+import cz.schrek.tuzex.contracts.model.customers.Customer
 import cz.schrek.tuzex.customers.appliacation.model.AddressType
 import cz.schrek.tuzex.customers.appliacation.model.CustomerContacts
 import cz.schrek.tuzex.customers.appliacation.model.CustomerPersonalInfo

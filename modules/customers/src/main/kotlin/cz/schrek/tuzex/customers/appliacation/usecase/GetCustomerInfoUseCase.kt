@@ -1,7 +1,7 @@
 package cz.schrek.tuzex.customers.appliacation.usecase
 
 import cz.schrek.tuzex.common.annotations.UseCase
-import cz.schrek.tuzex.contracts.models.common.Address
+import cz.schrek.tuzex.contracts.model.common.Address
 import cz.schrek.tuzex.customers.appliacation.model.AddressType
 import cz.schrek.tuzex.customers.appliacation.model.CustomerContacts
 import cz.schrek.tuzex.customers.appliacation.model.CustomerPersonalInfo

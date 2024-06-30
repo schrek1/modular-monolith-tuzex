@@ -1,6 +1,6 @@
 package cz.schrek.tuzex.contracts.modules.customers
 
-import cz.schrek.tuzex.contracts.models.common.Address
+import cz.schrek.tuzex.contracts.model.common.Address
 import java.util.*
 
 interface CustomerModifier {
