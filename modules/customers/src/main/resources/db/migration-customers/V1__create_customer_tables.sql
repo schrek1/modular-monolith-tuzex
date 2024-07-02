@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS customer_addresses
     street       TEXT                     NOT NULL,
     city         TEXT                     NOT NULL,
     postal_code  TEXT                     NOT NULL,
+    country      TEXT                     NOT NULL,
     created_at   TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at   TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (customer_id) REFERENCES customers (id) ON DELETE CASCADE
@@ -33,6 +34,19 @@ CREATE TABLE IF NOT EXISTS customer_contacts
     value        TEXT                     NOT NULL,
     created_at   TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at   TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (customer_id) REFERENCES customers (id) ON DELETE CASCADE,
+    CONSTRAINT contact_type_value UNIQUE (contact_type, value)
+);
+
+CREATE INDEX IF NOT EXISTS idx_customer_contacts_customer_id ON customer_contacts USING btree (customer_id);
+
+CREATE TABLE IF NOT EXISTS customer_credentials
+(
+    id          SERIAL PRIMARY KEY,
+    customer_id INTEGER                  NOT NULL,
+    password    TEXT                     NOT NULL,
+    created_at  TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at  TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (customer_id) REFERENCES customers (id) ON DELETE CASCADE
 );
 

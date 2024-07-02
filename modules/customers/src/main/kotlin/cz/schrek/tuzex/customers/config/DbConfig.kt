@@ -12,6 +12,7 @@ import org.springframework.orm.jpa.JpaTransactionManager
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter
 import org.springframework.transaction.PlatformTransactionManager
+import org.springframework.transaction.annotation.AbstractTransactionManagementConfiguration
 import org.springframework.transaction.annotation.EnableTransactionManagement
 import javax.sql.DataSource
 
@@ -24,9 +25,13 @@ import javax.sql.DataSource
 )
 class DbConfig(
     private val moduleConfiguration: CustomerModuleConfiguration
-) {
+) : AbstractTransactionManagementConfiguration() {
 
-    @Bean
+    companion object {
+        const val MODULE_TRANSACTION_MANAGER = "customersTransactionManager"
+    }
+
+    @Bean("customersEntityManager")
     fun customersEntityManager(): LocalContainerEntityManagerFactoryBean =
         LocalContainerEntityManagerFactoryBean().apply {
             dataSource = customersPostgres()
@@ -37,7 +42,7 @@ class DbConfig(
             })
         }
 
-    @Bean
+    @Bean(MODULE_TRANSACTION_MANAGER)
     fun customersTransactionManager(@Qualifier("customersEntityManager") emf: EntityManagerFactory): PlatformTransactionManager =
         JpaTransactionManager().apply { entityManagerFactory = emf }
 

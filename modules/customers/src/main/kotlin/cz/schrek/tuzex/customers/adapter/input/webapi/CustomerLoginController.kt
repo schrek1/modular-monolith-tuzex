@@ -22,7 +22,7 @@ class CustomerLoginController(
 
     @PostMapping("${WebApiConst.API_PREFIX}/v1/${CustomerModuleConfiguration.MODULE_NAME}/customer/login")
     @ResponseStatus(HttpStatus.CREATED)
-    fun createCustomer(@Valid @RequestBody request: CustomerLoginApiRequest): CustomerLoginApiResponse =
+    fun loginCustomer(@Valid @RequestBody request: CustomerLoginApiRequest): CustomerLoginApiResponse =
         customerLoginUseCase.login(
             email = Email(request.email),
             password = request.password

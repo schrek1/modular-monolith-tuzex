@@ -1,9 +1,11 @@
 package cz.schrek.tuzex.customers.adapter.input.webapi.dto
 
-import cz.schrek.tuzex.common.webapi.validations.ValidPhoneNumber
-import cz.schrek.tuzex.common.webapi.validations.ValidPhonePrefix
+import cz.schrek.tuzex.common.validations.ValidPhoneNumber
+import cz.schrek.tuzex.common.validations.ValidPhonePrefix
+import cz.schrek.tuzex.contracts.model.common.Password
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
+import jakarta.validation.constraints.NotNull
 import java.util.*
 
 data class CreateCustomerApiRequest(
@@ -23,6 +25,10 @@ data class CreateCustomerApiRequest(
     val city: String,
     @field:NotBlank
     val zipCode: String,
+    @field:NotBlank
+    val country: String,
+    @field:NotNull
+    val password: Password
 )
 
 data class CreateCustomerApiResponse(

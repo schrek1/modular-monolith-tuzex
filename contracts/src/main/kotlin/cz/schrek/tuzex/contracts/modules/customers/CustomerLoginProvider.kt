@@ -4,6 +4,7 @@ import arrow.core.Either
 import cz.schrek.tuzex.contracts.model.common.Email
 
 interface CustomerLoginProvider {
+
     fun login(email: Email, password: String): Either<CustomerLoginFailure, CustomerLoginSuccess>
 }
 

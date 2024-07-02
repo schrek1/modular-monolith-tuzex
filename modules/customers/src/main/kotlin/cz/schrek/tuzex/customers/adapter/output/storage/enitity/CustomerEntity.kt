@@ -1,5 +1,7 @@
 package cz.schrek.tuzex.customers.adapter.output.storage.enitity
 
+import cz.schrek.tuzex.common.utils.UUIDUtils.nilUuid
+import cz.schrek.tuzex.customers.adapter.output.storage.enitity.CustomerCredentialsEntity.Companion.copy
 import jakarta.persistence.CascadeType
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
@@ -8,6 +10,7 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.OneToMany
+import jakarta.persistence.OneToOne
 import jakarta.persistence.Table
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
@@ -39,6 +42,8 @@ class CustomerEntity(
     @Column(name = "updated_at")
     val updatedAt: OffsetDateTime = OffsetDateTime.now(),
 
+    customerCredentials: CustomerCredentialsEntity? = null,
+
     @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
     @JoinColumn(name = "customer_id", nullable = false)
     val customerAddresses: List<CustomerAddressEntity> = emptyList(),
@@ -47,23 +52,32 @@ class CustomerEntity(
     @JoinColumn(name = "customer_id", nullable = false)
     val customerContacts: List<CustomerContactEntity> = emptyList(),
 ) {
-    fun CustomerEntity.copy(
-        id: Int = this.id,
-        externalId: UUID = this.externalId,
-        firstName: String = this.firstName,
-        lastName: String = this.lastName,
-        createdAt: OffsetDateTime = this.createdAt,
-        updatedAt: OffsetDateTime = this.updatedAt,
-        customerAddresses: List<CustomerAddressEntity> = this.customerAddresses,
-        customerContacts: List<CustomerContactEntity> = this.customerContacts,
-    ) = CustomerEntity(
-        id = id,
-        externalId = externalId,
-        firstName = firstName,
-        lastName = lastName,
-        createdAt = createdAt,
-        updatedAt = updatedAt,
-        customerAddresses = customerAddresses,
-        customerContacts = customerContacts,
-    )
+
+    @OneToOne(mappedBy = "customer", cascade = [CascadeType.ALL], orphanRemoval = true)
+    val customerCredentials = customerCredentials?.copy(customer = this)
+
+    companion object {
+        val EMPTY = CustomerEntity(
+            externalId = nilUuid,
+            firstName = "",
+            lastName = "",
+        )
+
+        fun CustomerEntity.copy(
+            firstName: String = this.firstName,
+            lastName: String = this.lastName,
+            customerAddresses: List<CustomerAddressEntity> = this.customerAddresses,
+            customerContacts: List<CustomerContactEntity> = this.customerContacts,
+        ) = CustomerEntity(
+            id = id,
+            externalId = externalId,
+            firstName = firstName,
+            lastName = lastName,
+            createdAt = createdAt,
+            updatedAt = updatedAt,
+            customerCredentials = customerCredentials,
+            customerAddresses = customerAddresses,
+            customerContacts = customerContacts,
+        )
+    }
 }

@@ -5,9 +5,12 @@ import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
+import jakarta.persistence.FetchType.LAZY
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import jakarta.persistence.JoinColumn
+import jakarta.persistence.ManyToOne
 import jakarta.persistence.Table
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
@@ -19,7 +22,11 @@ class CustomerAddressEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    val id: Int = 0,
+    val id: Long = 0,
+
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "customer_id", nullable = false, insertable = false, updatable = false)
+    val customer: CustomerEntity? = null,
 
     @Column(name = "address_type")
     @Enumerated(EnumType.STRING)
@@ -34,6 +41,9 @@ class CustomerAddressEntity(
     @Column(name = "postal_code")
     val postalCode: String,
 
+    @Column(name = "country")
+    val country: String,
+
     @field:CreationTimestamp
     @Column(name = "created_at", updatable = false)
     val createdAt: OffsetDateTime = OffsetDateTime.now(),
@@ -43,22 +53,23 @@ class CustomerAddressEntity(
     val updatedAt: OffsetDateTime = OffsetDateTime.now(),
 ) {
 
-
-    fun CustomerAddressEntity.copy(
-        id: Int = this.id,
-        addressType: AddressType = this.addressType,
-        street: String = this.street,
-        city: String = this.city,
-        postalCode: String = this.postalCode,
-        createdAt: OffsetDateTime = this.createdAt,
-        updatedAt: OffsetDateTime = this.updatedAt,
-    ) = CustomerAddressEntity(
-        id = id,
-        addressType = addressType,
-        street = street,
-        city = city,
-        postalCode = postalCode,
-        createdAt = createdAt,
-        updatedAt = updatedAt,
-    )
+    companion object {
+        fun CustomerAddressEntity.copy(
+            addressType: AddressType = this.addressType,
+            street: String = this.street,
+            city: String = this.city,
+            postalCode: String = this.postalCode,
+            country: String = this.country,
+        ) = CustomerAddressEntity(
+            id = id,
+            customer = customer,
+            addressType = addressType,
+            street = street,
+            city = city,
+            postalCode = postalCode,
+            country = country,
+            createdAt = createdAt,
+            updatedAt = updatedAt,
+        )
+    }
 }

@@ -32,7 +32,13 @@ class CustomerController(
                 surname = request.surname,
                 email = Email(request.email),
                 phoneNumber = PhoneNumber(prefix = request.phonePrefix, number = request.phoneNumber),
-                address = Address(street = request.street, city = request.city, postalCode = request.zipCode)
+                address = Address(
+                    street = request.street,
+                    city = request.city,
+                    postalCode = request.zipCode,
+                    country = request.country
+                ),
+                password = request.password
             )
         ).map { CreateCustomerApiResponse(it) }.getOrElse { errors ->
             val errorMessage = errors.joinToString { it.description }
