@@ -7,9 +7,9 @@ import cz.schrek.tuzex.common.utils.ThreadUtils.getOrThrow
 import cz.schrek.tuzex.contracts.model.customers.Customer
 import cz.schrek.tuzex.contracts.model.customers.CustomerId
 import cz.schrek.tuzex.contracts.modules.customers.CustomerInfoProvider
-import cz.schrek.tuzex.customers.appliacation.model.AddressType
-import cz.schrek.tuzex.customers.appliacation.service.CustomerService
-import cz.schrek.tuzex.customers.appliacation.usecase.GetCustomerInfoUseCase
+import cz.schrek.tuzex.customers.appliacation.domain.model.AddressType
+import cz.schrek.tuzex.customers.appliacation.domain.service.CustomerService
+import cz.schrek.tuzex.customers.appliacation.domain.usecase.GetCustomerInfoUseCase
 
 @Adapter
 class CustomerInfoProviderAdapter(

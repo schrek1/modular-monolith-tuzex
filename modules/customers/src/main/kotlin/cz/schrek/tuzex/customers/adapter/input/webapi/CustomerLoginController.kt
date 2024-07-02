@@ -5,7 +5,7 @@ import cz.schrek.tuzex.common.webapi.WebApiConst
 import cz.schrek.tuzex.contracts.model.common.Email
 import cz.schrek.tuzex.customers.adapter.input.webapi.dto.CustomerLoginApiRequest
 import cz.schrek.tuzex.customers.adapter.input.webapi.dto.CustomerLoginApiResponse
-import cz.schrek.tuzex.customers.appliacation.usecase.CustomerLoginUseCase
+import cz.schrek.tuzex.customers.appliacation.domain.usecase.CustomerLoginUseCase
 import cz.schrek.tuzex.customers.config.CustomerModuleConfiguration
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus

@@ -1,6 +1,6 @@
 package cz.schrek.tuzex.customers.adapter.output.storage.enitity
 
-import cz.schrek.tuzex.customers.appliacation.model.AddressType
+import cz.schrek.tuzex.customers.appliacation.domain.model.AddressType
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType

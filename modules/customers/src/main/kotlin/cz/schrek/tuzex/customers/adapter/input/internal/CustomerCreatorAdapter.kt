@@ -6,7 +6,7 @@ import cz.schrek.tuzex.contracts.model.customers.CustomerId
 import cz.schrek.tuzex.contracts.modules.customers.CustomerCreationError
 import cz.schrek.tuzex.contracts.modules.customers.CustomerCreator
 import cz.schrek.tuzex.contracts.modules.customers.NewCustomerRequest
-import cz.schrek.tuzex.customers.appliacation.usecase.CreateNewCustomerUseCase
+import cz.schrek.tuzex.customers.appliacation.domain.usecase.CreateNewCustomerUseCase
 
 @Adapter
 class CustomerCreatorAdapter(

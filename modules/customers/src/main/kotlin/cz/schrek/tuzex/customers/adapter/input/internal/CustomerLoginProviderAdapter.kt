@@ -6,7 +6,7 @@ import cz.schrek.tuzex.contracts.model.common.Email
 import cz.schrek.tuzex.contracts.modules.customers.CustomerLoginFailure
 import cz.schrek.tuzex.contracts.modules.customers.CustomerLoginProvider
 import cz.schrek.tuzex.contracts.modules.customers.CustomerLoginSuccess
-import cz.schrek.tuzex.customers.appliacation.usecase.CustomerLoginUseCase
+import cz.schrek.tuzex.customers.appliacation.domain.usecase.CustomerLoginUseCase
 
 @Adapter
 class CustomerLoginProviderAdapter(

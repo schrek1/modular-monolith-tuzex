@@ -1,4 +1,4 @@
-package cz.schrek.tuzex.customers.appliacation.usecase
+package cz.schrek.tuzex.customers.appliacation.domain.usecase
 
 import arrow.core.Either
 import arrow.core.raise.either

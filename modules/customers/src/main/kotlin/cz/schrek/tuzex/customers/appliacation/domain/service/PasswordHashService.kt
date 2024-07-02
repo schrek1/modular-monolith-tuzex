@@ -1,4 +1,4 @@
-package cz.schrek.tuzex.customers.appliacation.service
+package cz.schrek.tuzex.customers.appliacation.domain.service
 
 import cz.schrek.tuzex.contracts.model.common.Password
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder

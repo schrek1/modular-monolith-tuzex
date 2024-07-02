@@ -8,7 +8,7 @@ import cz.schrek.tuzex.contracts.model.common.PhoneNumber
 import cz.schrek.tuzex.contracts.modules.customers.NewCustomerRequest
 import cz.schrek.tuzex.customers.adapter.input.webapi.dto.CreateCustomerApiRequest
 import cz.schrek.tuzex.customers.adapter.input.webapi.dto.CreateCustomerApiResponse
-import cz.schrek.tuzex.customers.appliacation.usecase.CreateNewCustomerUseCase
+import cz.schrek.tuzex.customers.appliacation.domain.usecase.CreateNewCustomerUseCase
 import cz.schrek.tuzex.customers.config.CustomerModuleConfiguration
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
