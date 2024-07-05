@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 
 @ConfigurationProperties(prefix = "modules.products")
 data class ProductModuleConfiguration(
-    val datasource: DataSourceConfiguration,
+    val postgres: PostgresConfiguration,
     val flyway: FlywayConfiguration
 ) {
     companion object {
@@ -13,7 +13,7 @@ data class ProductModuleConfiguration(
 }
 
 
-data class DataSourceConfiguration(
+data class PostgresConfiguration(
     val url: String,
     val username: String,
     val password: String,

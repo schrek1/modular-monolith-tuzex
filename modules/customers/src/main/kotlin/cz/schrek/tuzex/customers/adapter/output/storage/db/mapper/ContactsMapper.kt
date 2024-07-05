@@ -1,4 +1,4 @@
-package cz.schrek.tuzex.customers.adapter.output.storage.mapper
+package cz.schrek.tuzex.customers.adapter.output.storage.db.mapper
 
 import cz.schrek.tuzex.contracts.model.common.Email
 import cz.schrek.tuzex.contracts.model.common.PhoneNumber

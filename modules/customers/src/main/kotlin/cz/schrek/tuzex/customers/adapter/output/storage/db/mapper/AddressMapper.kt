@@ -1,7 +1,7 @@
-package cz.schrek.tuzex.customers.adapter.output.storage.mapper
+package cz.schrek.tuzex.customers.adapter.output.storage.db.mapper
 
 import cz.schrek.tuzex.contracts.model.common.Address
-import cz.schrek.tuzex.customers.adapter.output.storage.enitity.CustomerAddressEntity
+import cz.schrek.tuzex.customers.adapter.output.storage.db.enitity.CustomerAddressEntity
 
 object AddressMapper {
 

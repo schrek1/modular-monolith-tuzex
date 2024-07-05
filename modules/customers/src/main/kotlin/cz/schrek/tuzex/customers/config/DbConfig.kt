@@ -1,6 +1,7 @@
 package cz.schrek.tuzex.customers.config
 
 import cz.schrek.tuzex.common.Const
+import cz.schrek.tuzex.customers.common.properties.CustomerModuleConfigProperties
 import jakarta.persistence.EntityManagerFactory
 import org.flywaydb.core.Flyway
 import org.springframework.beans.factory.annotation.Qualifier
@@ -19,12 +20,12 @@ import javax.sql.DataSource
 @Configuration("customersDbConfig")
 @EnableTransactionManagement
 @EnableJpaRepositories(
-    basePackages = ["${Const.BASE_PACKAGE}.${CustomerModuleConfiguration.MODULE_NAME}"],
+    basePackages = ["${Const.BASE_PACKAGE}.${CustomerModuleConfigProperties.MODULE_NAME}"],
     entityManagerFactoryRef = "customersEntityManager",
     transactionManagerRef = "customersTransactionManager"
 )
 class DbConfig(
-    private val moduleConfiguration: CustomerModuleConfiguration
+    private val moduleConfiguration: CustomerModuleConfigProperties
 ) : AbstractTransactionManagementConfiguration() {
 
     companion object {
@@ -35,10 +36,10 @@ class DbConfig(
     fun customersEntityManager(): LocalContainerEntityManagerFactoryBean =
         LocalContainerEntityManagerFactoryBean().apply {
             dataSource = customersPostgres()
-            setPackagesToScan("${Const.BASE_PACKAGE}.${CustomerModuleConfiguration.MODULE_NAME}")
+            setPackagesToScan("${Const.BASE_PACKAGE}.${CustomerModuleConfigProperties.MODULE_NAME}")
             jpaVendorAdapter = HibernateJpaVendorAdapter()
             setJpaPropertyMap(buildMap {
-                put("hibernate.default_schema", moduleConfiguration.datasource.schema)
+                put("hibernate.default_schema", moduleConfiguration.postgres.schema)
             })
         }
 
@@ -49,9 +50,9 @@ class DbConfig(
     @Bean
     fun customersPostgres(): DataSource =
         DataSourceBuilder.create()
-            .url(moduleConfiguration.datasource.url)
-            .username(moduleConfiguration.datasource.username)
-            .password(moduleConfiguration.datasource.password)
+            .url(moduleConfiguration.postgres.url)
+            .username(moduleConfiguration.postgres.username)
+            .password(moduleConfiguration.postgres.password)
             .build()
 
     @Bean(initMethod = "migrate")
@@ -59,7 +60,7 @@ class DbConfig(
         moduleConfiguration.flyway.enabled -> {
             Flyway.configure()
                 .dataSource(dataSource)
-                .schemas(moduleConfiguration.datasource.schema)
+                .schemas(moduleConfiguration.postgres.schema)
                 .locations(moduleConfiguration.flyway.location)
                 .load()
         }

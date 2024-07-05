@@ -1,7 +1,7 @@
-package cz.schrek.tuzex.customers.adapter.output.storage.enitity
+package cz.schrek.tuzex.customers.adapter.output.storage.db.enitity
 
 import cz.schrek.tuzex.common.utils.UUIDUtils.nilUuid
-import cz.schrek.tuzex.customers.adapter.output.storage.enitity.CustomerCredentialsEntity.Companion.copy
+import cz.schrek.tuzex.customers.adapter.output.storage.db.enitity.CustomerCredentialsEntity.Companion.copy
 import jakarta.persistence.CascadeType
 import jakarta.persistence.Column
 import jakarta.persistence.Entity

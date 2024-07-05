@@ -1,16 +1,23 @@
+logging.level:
+  org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
 modules:
   customers:
-    datasource:
+    token:
+      expiration: 6h
+    postgres:
       url: jdbc:postgresql://localhost:15432/postgres
       username: postgres
       password: postgres
       schema: customers
-
+    redis:
+      host: localhost
+      port: 16379
+      password: localRedisPass
     flyway:
       enabled: true
       location: classpath:db/migration-customers
   products:
-    datasource:
+    postgres:
       url: jdbc:postgresql://localhost:15432/postgres
       username: postgres
       password: postgres

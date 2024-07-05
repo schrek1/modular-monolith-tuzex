@@ -1,4 +1,4 @@
-package cz.schrek.tuzex.customers.adapter.output.storage.enitity
+package cz.schrek.tuzex.customers.adapter.output.storage.db.enitity
 
 import cz.schrek.tuzex.customers.appliacation.domain.model.AddressType
 import jakarta.persistence.Column

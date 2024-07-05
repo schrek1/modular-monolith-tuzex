@@ -1,29 +1,29 @@
-package cz.schrek.tuzex.customers.adapter.output.storage
+package cz.schrek.tuzex.customers.adapter.output.storage.adapter
 
+import cz.schrek.tuzex.common.annotations.Adapter
 import cz.schrek.tuzex.contracts.model.common.Address
 import cz.schrek.tuzex.contracts.model.common.Email
 import cz.schrek.tuzex.contracts.model.common.PhoneNumber
 import cz.schrek.tuzex.contracts.model.customers.Customer
-import cz.schrek.tuzex.customers.adapter.output.storage.dao.CustomerContactRepository
-import cz.schrek.tuzex.customers.adapter.output.storage.dao.CustomerCredentialsRepository
-import cz.schrek.tuzex.customers.adapter.output.storage.dao.CustomerRepository
-import cz.schrek.tuzex.customers.adapter.output.storage.enitity.CustomerAddressEntity
-import cz.schrek.tuzex.customers.adapter.output.storage.enitity.CustomerContactEntity
-import cz.schrek.tuzex.customers.adapter.output.storage.enitity.CustomerCredentialsEntity
-import cz.schrek.tuzex.customers.adapter.output.storage.enitity.CustomerEntity
-import cz.schrek.tuzex.customers.adapter.output.storage.mapper.ContactsMapper.toDbValue
-import cz.schrek.tuzex.customers.adapter.output.storage.mapper.CustomerMapper.toDomain
+import cz.schrek.tuzex.customers.adapter.output.storage.db.dao.CustomerContactRepository
+import cz.schrek.tuzex.customers.adapter.output.storage.db.dao.CustomerCredentialsRepository
+import cz.schrek.tuzex.customers.adapter.output.storage.db.dao.CustomerRepository
+import cz.schrek.tuzex.customers.adapter.output.storage.db.enitity.CustomerAddressEntity
+import cz.schrek.tuzex.customers.adapter.output.storage.db.enitity.CustomerContactEntity
+import cz.schrek.tuzex.customers.adapter.output.storage.db.enitity.CustomerCredentialsEntity
+import cz.schrek.tuzex.customers.adapter.output.storage.db.enitity.CustomerEntity
+import cz.schrek.tuzex.customers.adapter.output.storage.db.mapper.ContactsMapper.toDbValue
+import cz.schrek.tuzex.customers.adapter.output.storage.db.mapper.CustomerMapper.toDomain
 import cz.schrek.tuzex.customers.appliacation.domain.model.AddressType
 import cz.schrek.tuzex.customers.appliacation.domain.model.CustomerContacts
 import cz.schrek.tuzex.customers.appliacation.domain.model.CustomerCredentials
 import cz.schrek.tuzex.customers.appliacation.domain.model.CustomerPersonalInfo
 import cz.schrek.tuzex.customers.appliacation.port.output.CustomerStorage
 import cz.schrek.tuzex.customers.config.DbConfig
-import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 import java.util.*
 
-@Component
+@Adapter
 internal class CustomerStorageImpl(
     private val customerRepository: CustomerRepository,
     private val customerCredentialsRepository: CustomerCredentialsRepository,

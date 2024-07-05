@@ -10,16 +10,18 @@ import cz.schrek.tuzex.customers.appliacation.domain.model.CustomerContacts
 import cz.schrek.tuzex.customers.appliacation.domain.model.CustomerCredentials
 import cz.schrek.tuzex.customers.appliacation.domain.model.CustomerPersonalInfo
 import cz.schrek.tuzex.customers.appliacation.domain.service.PasswordHashService
+import cz.schrek.tuzex.customers.appliacation.port.input.CreateNewCustomerUseCase
 import cz.schrek.tuzex.customers.appliacation.port.output.CustomerStorage
 import java.util.*
 
+
 @UseCase
-class CreateNewCustomerUseCase(
+internal class CreateNewCustomerUseCaseImpl(
     private val customerStorage: CustomerStorage,
     private val passwordHashService: PasswordHashService
-) {
+) : CreateNewCustomerUseCase {
 
-    fun createNewCustomer(request: NewCustomerRequest): Either<List<CustomerCreationError>, UUID> = either {
+    override fun createNewCustomer(request: NewCustomerRequest): Either<List<CustomerCreationError>, UUID> = either {
         validateThatCustomerDoesNotExist(request).takeUnless { it.isEmpty() }?.let { raise(it) }
 
         val hashedPassword = passwordHashService.hashPassword(request.password)

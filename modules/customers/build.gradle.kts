@@ -4,7 +4,11 @@ dependencies {
 
     implementation(catalog.spring.security.crypto)
 
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
+
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation(catalog.postgresql)
     implementation(catalog.bundles.flyway)
+
+    implementation(catalog.bundles.jwt)
 }

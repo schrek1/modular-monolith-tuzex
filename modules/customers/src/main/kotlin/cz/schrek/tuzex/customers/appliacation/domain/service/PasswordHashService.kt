@@ -14,6 +14,6 @@ class PasswordHashService {
     fun hashPassword(password: Password): String = bCrypt.encode(password.toCharBuffer())
 
     companion object {
-        private const val PASSWORD_STRENGTH = 16
+        private const val PASSWORD_STRENGTH = 12
     }
 }

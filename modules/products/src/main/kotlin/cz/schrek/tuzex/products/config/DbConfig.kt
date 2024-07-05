@@ -32,7 +32,7 @@ class DbConfig(
             dataSource = productsPostgres()
             setPackagesToScan("${Const.BASE_PACKAGE}.${ProductModuleConfiguration.MODULE_NAME}")
             jpaVendorAdapter = HibernateJpaVendorAdapter()
-            setJpaPropertyMap(buildMap { put("hibernate.default_schema", moduleConfiguration.datasource.schema) })
+            setJpaPropertyMap(buildMap { put("hibernate.default_schema", moduleConfiguration.postgres.schema) })
         }
 
     @Bean
@@ -42,9 +42,9 @@ class DbConfig(
     @Bean
     fun productsPostgres(): DataSource =
         DataSourceBuilder.create()
-            .url(moduleConfiguration.datasource.url)
-            .username(moduleConfiguration.datasource.username)
-            .password(moduleConfiguration.datasource.password)
+            .url(moduleConfiguration.postgres.url)
+            .username(moduleConfiguration.postgres.username)
+            .password(moduleConfiguration.postgres.password)
             .build()
 
     @Bean(initMethod = "migrate")
@@ -52,7 +52,7 @@ class DbConfig(
         moduleConfiguration.flyway.enabled -> {
             Flyway.configure()
                 .dataSource(dataSource)
-                .schemas(moduleConfiguration.datasource.schema)
+                .schemas(moduleConfiguration.postgres.schema)
                 .locations(moduleConfiguration.flyway.location)
                 .load()
         }

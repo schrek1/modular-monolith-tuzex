@@ -1,6 +1,6 @@
-package cz.schrek.tuzex.customers.adapter.output.storage.dao
+package cz.schrek.tuzex.customers.adapter.output.storage.db.dao
 
-import cz.schrek.tuzex.customers.adapter.output.storage.enitity.CustomerEntity
+import cz.schrek.tuzex.customers.adapter.output.storage.db.enitity.CustomerEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 import java.util.*

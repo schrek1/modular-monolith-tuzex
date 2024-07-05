@@ -8,8 +8,8 @@ import cz.schrek.tuzex.contracts.model.common.PhoneNumber
 import cz.schrek.tuzex.contracts.modules.customers.NewCustomerRequest
 import cz.schrek.tuzex.customers.adapter.input.webapi.dto.CreateCustomerApiRequest
 import cz.schrek.tuzex.customers.adapter.input.webapi.dto.CreateCustomerApiResponse
-import cz.schrek.tuzex.customers.appliacation.domain.usecase.CreateNewCustomerUseCase
-import cz.schrek.tuzex.customers.config.CustomerModuleConfiguration
+import cz.schrek.tuzex.customers.appliacation.port.input.CreateNewCustomerUseCase
+import cz.schrek.tuzex.customers.common.properties.CustomerModuleConfigProperties
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.PostMapping
@@ -23,7 +23,7 @@ class CustomerController(
     private val createNewCustomerUseCase: CreateNewCustomerUseCase
 ) {
 
-    @PostMapping("${WebApiConst.API_PREFIX}/v1/${CustomerModuleConfiguration.MODULE_NAME}/customer")
+    @PostMapping("${WebApiConst.API_PREFIX}/${CustomerModuleConfigProperties.MODULE_NAME}/v1/customer")
     @ResponseStatus(HttpStatus.CREATED)
     fun createCustomer(@Valid @RequestBody request: CreateCustomerApiRequest): CreateCustomerApiResponse =
         createNewCustomerUseCase.createNewCustomer(

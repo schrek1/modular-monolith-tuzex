@@ -3,6 +3,7 @@ kotlin = "2.0.0"
 spring = "3.3.0"
 arrow = "1.2.4"
 flyway = "10.15.0"
+jwt = "0.12.6"
 
 [libraries]
 spring-bom = { group = "org.springframework.boot", name = "spring-boot-dependencies", version.ref = "spring" }
@@ -14,6 +15,10 @@ arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow" }
 postgresql = { group = "org.postgresql", name = "postgresql", version = "42.7.3" }
 flyway-core = { group = "org.flywaydb", name = "flyway-core", version.ref = "flyway" }
 flyway-postgres = { group = "org.flywaydb", name = "flyway-database-postgresql", version.ref = "flyway" }
+
+jwt-api = { group = "io.jsonwebtoken", name = "jjwt-api", version.ref = "jwt" }
+jwt-impl = { group = "io.jsonwebtoken", name = "jjwt-impl", version.ref = "jwt" }
+jwt-jackson = { group = "io.jsonwebtoken", name = "jjwt-jackson", version.ref = "jwt" }
 
 # TEST DEPENDECIES
 
@@ -31,4 +36,9 @@ springBoot = { id = "org.springframework.boot", version.ref = "spring" }
 flyway = [
     "flyway-core",
     "flyway-postgres"
+]
+jwt = [
+    "jwt-api",
+    "jwt-impl",
+    "jwt-jackson"
 ]

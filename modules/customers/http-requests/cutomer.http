@@ -1,0 +1,17 @@
+### create new customer
+POST http://localhost:8080/api/customers/v1/customer
+Content-Type: application/json
+
+{
+  "name": "{{$random.alphabetic(8)}}",
+  "surname": "{{$random.alphabetic(8)}}",
+  "email": "{{$random.email}}",
+  "phonePrefix": "+{{$random.integer(1,999)}}",
+  "phoneNumber": "{{$random.integer(100,999)}}{{$random.integer(100,999)}}{{$random.integer(100,999)}}",
+  "street": "{{$random.alphabetic(9)}}",
+  "city": "{{$random.alphabetic(10)}}",
+  "zipCode": "{{$random.integer(100,999)}}{{$random.integer(10,99)}}",
+  "country": "{{$random.alphabetic(7)}}",
+  "password": "Heslo123"
+
+}

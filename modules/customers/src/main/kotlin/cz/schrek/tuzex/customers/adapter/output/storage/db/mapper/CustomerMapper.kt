@@ -1,12 +1,12 @@
-package cz.schrek.tuzex.customers.adapter.output.storage.mapper
+package cz.schrek.tuzex.customers.adapter.output.storage.db.mapper
 
 import cz.schrek.tuzex.contracts.model.customers.Customer
 import cz.schrek.tuzex.contracts.model.customers.CustomerId
-import cz.schrek.tuzex.customers.adapter.output.storage.enitity.CustomerContactEntity
-import cz.schrek.tuzex.customers.adapter.output.storage.enitity.CustomerEntity
-import cz.schrek.tuzex.customers.adapter.output.storage.mapper.AddressMapper.toDomain
-import cz.schrek.tuzex.customers.adapter.output.storage.mapper.ContactsMapper.mapAsEmail
-import cz.schrek.tuzex.customers.adapter.output.storage.mapper.ContactsMapper.mapAsPhoneNumber
+import cz.schrek.tuzex.customers.adapter.output.storage.db.enitity.CustomerContactEntity
+import cz.schrek.tuzex.customers.adapter.output.storage.db.enitity.CustomerEntity
+import cz.schrek.tuzex.customers.adapter.output.storage.db.mapper.AddressMapper.toDomain
+import cz.schrek.tuzex.customers.adapter.output.storage.db.mapper.ContactsMapper.mapAsEmail
+import cz.schrek.tuzex.customers.adapter.output.storage.db.mapper.ContactsMapper.mapAsPhoneNumber
 
 object CustomerMapper {
 

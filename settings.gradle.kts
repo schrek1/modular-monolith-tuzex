@@ -30,3 +30,5 @@ dependencyResolutionManagement {
     }
 }
 include("common")
+include("modules:auth")
+findProject(":modules:auth")?.name = "auth"
